@@ -1,0 +1,14 @@
+{
+    "folders": [
+    {
+        "path": "Networking.Common"
+    },
+    {
+        "path": "Networking.Web"
+    }
+    ],
+    "settings": {
+        "editor.acceptSuggestionOnCommitCharacter": false,
+        "dotnet.server.useOmnisharp": true
+    }
+}

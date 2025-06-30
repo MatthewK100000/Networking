@@ -1,0 +1,5 @@
+.DS_Store
+Networking.Console/Logs/
+Networking.WebApi/Logs/
+run_all.log
+NetworkingPractice.code-workspace

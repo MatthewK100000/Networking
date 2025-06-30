@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "UMZRpG6uQk22rPdrUqkaDIrM5t+YSZksCOmE6h+FoSw=",
+  "Source": "Networking.WebApi",
+  "BasePath": "_content/Networking.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
