@@ -21,7 +21,7 @@ The above diagram illustrates what is happening behind the scenes at every encry
     - The UTF-8 encoding is how to chunk a chain of bytes so it makes a "word", you can think of each encoding standard as essentially forming a different language and is interpreted differently. Analogous to a word in German being two words in English. 
 3. Wrap said message byte array using a hash function, $H(\cdot)$ (the SHA256 algorithm in this case).
     - At this point, data is *encoded*, anyone can simply *decode* it if they know the hash algorithm used in this case.
-    - Also known as a message digest, it helps because the encryption step in the asymmetric cryptography (specifically the RSA algorithm) is expensive.
+    - Also known as a *message digest*, it helps because the encryption step in the asymmetric cryptography (specifically the RSA algorithm) is expensive.
     - The hash algorithm is essentially a one-to-one mapping. Any slight variation in the input will generate a completely different hash.
 4. Using her RSA private key, which is known only to her, and no-one else, Alice passes the message digest and forms a *digital signature*. 
     - The digital signature is mathematically equivalent to a decryption step, denoted by the function $K^{-}_A(\cdot)$.
