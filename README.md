@@ -19,16 +19,16 @@ The above diagram illustrates what is happening behind the scenes at every encry
 
 1. Encode the message, $m$, as an array of bytes, *UTF-8 encoded*.
     - The UTF-8 encoding is how to chunk a chain of bytes so it makes a "word", you can think of each encoding standard as essentially forming a different language and is interpreted differently. Analogous to a word in German being two words in English. 
-3. Wrap said message byte array using a hash function, $H(\cdot)$ (the SHA256 algorithm in this case).
+3. Wrap said message byte array using a hash function, $H(\cdot)$ (the *SHA256 algorithm* in this case).
     - At this point, data is *encoded*, anyone can simply *decode* it if they know the hash algorithm used in this case.
-    - Also known as a *message digest*, it helps because the encryption step in the asymmetric cryptography (specifically the RSA algorithm) is expensive.
+    - Also known as a *message digest*, it helps because the encryption step in the asymmetric cryptography (specifically the *RSA algorithm*) is expensive.
     - The hash algorithm is essentially a one-to-one mapping. Any slight variation in the input will generate a completely different hash.
 4. Using her RSA private key, which is known only to her, and no-one else, Alice passes the message digest and forms a *digital signature*. 
     - The digital signature is mathematically equivalent to a decryption step, denoted by the function $K^{-}_A(\cdot)$.
     - When you *verify a signature*, you are essentially obtaining the original message digest $h$, through an encryption step on top of the decryption step, $K^{+}_A(K^{-}_A(H(m)))=H(m)=h$. Then comparing $h$ with your own computed hash of the plaintext message (that came along with the signature) by computing if $H(m) = h$.
     - If the comparison succeeds, you can conclude that 1. the message did indeed originate from Alice, and 2. the message was unaltered in transit.
     - If the comparison fails, then either 1. the message did not originate from Alice, or (both) 2. the message was altered in transit. 
-5. Alice packs the digital signature, along with the original message, serializing it into a JSON string, before encoding it into a byte array and encrypting it again, $K_S(\cdot)$, this time using symmetric cryptography (AES algorithm in this case).
+5. Alice packs the digital signature, along with the original message, serializing it into a JSON string, before encoding it into a byte array and encrypting it again, $K_S(\cdot)$, this time using symmetric cryptography (*AES algorithm* in this case).
     - AES is considered less expensive than RSA for long inputs. However, the drawback is that both parties must both have the same key before any communication is sent over the wire.
     - Note that the byte array format of the digital signature must be converted into a format safe for transmission (before being wrapped as a JSON key) such as *Base64 encoding*, which converts a byte array into a string. 
 6. Alice packs the encrypted message+signature byte array, now base64 encoded into a string, along with the AES public key $K_S$ (encrypted using Bob's public RSA key $K^{+}_B(\cdot)$ so that only Bob can read it) byte array, now base64 encoded as a string, forming a JSON with two keys.
