@@ -18,7 +18,7 @@ In the background, the following steps are performed:
 The above diagram illustrates what is happening behind the scenes at every encryption step, both Bob and Alice are essentially perfoming the following:
 
 1. Encode the message, $m$, as an array of bytes, *UTF-8 encoded*.
-    - The UTF-8 encoding is how to process each chain of bytes so it makes a "word", you can think of each encoding standard as essentially forming a different language and is interpreted differently. Analogous to a word in German being two words in English. 
+    - The UTF-8 encoding is how to chunk a chain of bytes so it makes a "word", you can think of each encoding standard as essentially forming a different language and is interpreted differently. Analogous to a word in German being two words in English. 
 3. Wrap said message byte array using a hash function, $H(\cdot)$ (the SHA256 algorithm in this case).
     - At this point, data is *encoded*, anyone can simply *decode* it if they know the hash algorithm used in this case.
     - Also known as a message digest, it helps because the encryption step in the asymmetric cryptography (specifically the RSA algorithm) is expensive.
