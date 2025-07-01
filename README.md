@@ -13,7 +13,7 @@ In the background, the following steps are performed:
 # Going Deeper...
 
 ![image](https://github.com/user-attachments/assets/c69ab35f-a4bb-4012-bfdb-9e180d883a47)
-*Source: "Computer Networking: A Top Down Approach 7th Ed"*
+*Source: "Computer Networking: A Top Down Approach 7th Ed" (see pages 593-635)*
 
 The above diagram illustrates what is happening behind the scenes at every encryption step, both Bob and Alice are essentially perfoming the following:
 
