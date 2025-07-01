@@ -27,11 +27,11 @@ The above diagram illustrates what is happening behind the scenes at every encry
     - The digital signature is mathematically equivalent to a decryption step, denoted by the function $K^{-}_A(\cdot)$.
     - When you *verify a signature*, you are essentially obtaining the original message digest $h$, through an encryption step on top of the decryption step, $K^{+}_A(K^{-}_A(H(m)))=H(m)=h$. Then comparing $h$ with your own computed hash of the plaintext message (that came along with the signature) by computing if $H(m) = h$.
     - If the comparison succeeds, you can conclude that 1. the message did indeed originate from Alice, and 2. the message was unaltered in transit.
-    - If the comparison fails, then either 1. the message did not originate from Alice, or 2. the message was altered in transit. 
-5. Alice packs the digital signature, along with the original message, serializing it into a JSON string, before encoding it into a byte array and encrypting it again, using a symmetric cryptography (AES algorithm in this case).
+    - If the comparison fails, then either 1. the message did not originate from Alice, or (both) 2. the message was altered in transit. 
+5. Alice packs the digital signature, along with the original message, serializing it into a JSON string, before encoding it into a byte array and encrypting it again, $K_S(\cdot)$, this time using symmetric cryptography (AES algorithm in this case).
     - AES is considered less expensive than RSA for long inputs. However, the drawback is that both parties must both have the same key before any communication is sent over the wire.
     - Note that the byte array format of the digital signature must be converted into a format safe for transmission (before being wrapped as a JSON key) such as *Base64 encoding*, which converts a byte array into a string. 
-6. Alice packs the encrypted message+signature byte array, now base64 encoded into a string, along with the AES public key (encrypted using Bob's public RSA key so that only Bob can read it) byte array, now base64 encoded as a string, forming a JSON with two keys.
+6. Alice packs the encrypted message+signature byte array, now base64 encoded into a string, along with the AES public key $K_S$ (encrypted using Bob's public RSA key $K^{+}_B(\cdot)$ so that only Bob can read it) byte array, now base64 encoded as a string, forming a JSON with two keys.
     - This technique of delivering the AES key RSA encrypted so that only Bob can read it, means Bob and Alice both can have it, which means they can just rely on symmetric cryptography instead. Again, less expensive for long inputs than asymmetric cryptography.
 
 Decryption is the above process, but in reverse, with a check that verifies the digital signature before returning the underlying secret message. 
