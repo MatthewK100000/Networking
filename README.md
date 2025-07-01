@@ -51,3 +51,6 @@ Decryption is the above process, but in reverse, with a check that verifies the 
 I wrote it mainly because I wanted to fill in some knowledge gaps regarding basic networking and cryptography, as well as learn a new language/technology: C#/.NET. This basic project seemed like a great fit for lifting those compound muscles! I hope you enjoy it!
 
 # How to Use
+Just run the executible ``./run_all.sh`` in the parent directory:
+![image](https://github.com/user-attachments/assets/c3b70673-e6b5-4fbc-b8d5-0590f966fd0c)
+
